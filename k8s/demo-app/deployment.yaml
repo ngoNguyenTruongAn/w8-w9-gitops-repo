@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: demo-app
+  namespace: demo
+  labels:
+    app: demo-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: demo-app
+  template:
+    metadata:
+      labels:
+        app: demo-app
+    spec:
+      containers:
+        - name: demo-app
+          image: ngonguyentruongan/w8-w9-demo-app:initial
+          ports:
+            - containerPort: 5000
+          env:
+            - name: APP_VERSION
+              value: "initial"
