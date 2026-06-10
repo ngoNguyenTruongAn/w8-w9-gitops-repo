@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: demo-app
-          image: ngonguyentruongan/w8-w9-demo-app:initial
+          image: truonganngo/w8-w9-demo-app:initial
           ports:
             - containerPort: 5000
           env:
