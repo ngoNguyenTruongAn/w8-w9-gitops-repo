@@ -17,9 +17,9 @@ spec:
     spec:
       containers:
         - name: demo-app
-          image: truonganngo/w8-w9-demo-app:initial
+          image: truonganngo/w8-w9-demo-app:6151384
           ports:
             - containerPort: 5000
           env:
             - name: APP_VERSION
-              value: "initial"
+              value: "6151384"
