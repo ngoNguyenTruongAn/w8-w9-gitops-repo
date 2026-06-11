@@ -1,6 +1,7 @@
 resources:
+  - configmap.yaml
   - deployment.yaml
   - service.yaml
-  - configmap.yaml
   - servicemonitor.yaml
   - analysis-template.yaml
+  - prometheus-rule.yaml
