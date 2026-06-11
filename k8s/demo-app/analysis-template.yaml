@@ -1,0 +1,25 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AnalysisTemplate
+metadata:
+  name: demo-app-error-rate
+  namespace: demo
+spec:
+  metrics:
+    - name: demo-app-5xx-rate
+      interval: 30s
+      count: 2
+      failureLimit: 1
+      provider:
+        prometheus:
+          address: http://monitoring-kube-prometheus-prometheus.monitoring.svc.cluster.local:9090
+          query: |
+            (
+              sum(rate(demo_http_requests_total{namespace="demo", status_code=~"5.."}[1m]))
+              or vector(0)
+            )
+            /
+            clamp_min(
+              sum(rate(demo_http_requests_total{namespace="demo"}[1m])),
+              0.001
+            )
+      successCondition: result[0] < 0.2
