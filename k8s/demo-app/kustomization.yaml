@@ -5,3 +5,4 @@ resources:
   - servicemonitor.yaml
   - prometheus-rule.yaml
   - alertmanager-config.yaml
+  - analysis-template.yaml

@@ -3,6 +3,8 @@ kind: AnalysisTemplate
 metadata:
   name: demo-app-error-rate
   namespace: demo
+  annotations:
+    argocd.argoproj.io/sync-wave: "1"
 spec:
   metrics:
     - name: demo-app-5xx-count
