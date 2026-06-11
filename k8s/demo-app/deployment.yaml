@@ -10,18 +10,18 @@ metadata:
 spec:
   replicas: 2
   strategy:
-  canary:
-    steps:
-      - setWeight: 25
-      - pause:
-          duration: 30s
-      - analysis:
-          templates:
-            - templateName: demo-app-error-rate
-      - setWeight: 50
-      - pause:
-          duration: 30s
-      - setWeight: 100
+    canary:
+      steps:
+        - setWeight: 25
+        - pause:
+            duration: 30s
+        - analysis:
+            templates:
+              - templateName: demo-app-error-rate
+        - setWeight: 50
+        - pause:
+            duration: 30s
+        - setWeight: 100
 
   selector:
     matchLabels:
