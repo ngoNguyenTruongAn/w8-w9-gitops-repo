@@ -13,14 +13,20 @@ spec:
     canary:
       steps:
         - setWeight: 25
-        - pause: {}
+        - pause:
+            duration: 30s
+        - analysis:
+            templates:
+              - templateName: demo-app-error-rate
         - setWeight: 50
         - pause:
             duration: 30s
         - setWeight: 100
+
   selector:
     matchLabels:
       app: demo-app
+
   template:
     metadata:
       labels:
@@ -40,7 +46,9 @@ spec:
               memory: "256Mi"
           env:
             - name: APP_VERSION
-              value: "v2"
+              value: "v3-bad"
+            - name: ERROR_RATE
+              value: "0.8"
           envFrom:
             - configMapRef:
                 name: demo-app-config
