@@ -1,5 +1,5 @@
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
 metadata:
   name: demo-app
   namespace: demo
@@ -9,6 +9,15 @@ metadata:
     argocd.argoproj.io/sync-wave: "2"
 spec:
   replicas: 2
+  strategy:
+    canary:
+      steps:
+        - setWeight: 25
+        - pause: {}
+        - setWeight: 50
+        - pause:
+            duration: 30s
+        - setWeight: 100
   selector:
     matchLabels:
       app: demo-app
