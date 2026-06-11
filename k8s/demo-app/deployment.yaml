@@ -13,11 +13,7 @@ spec:
     canary:
       steps:
         - setWeight: 25
-        - pause:
-            duration: 30s
-        - analysis:
-            templates:
-              - templateName: demo-app-error-rate
+        - pause: {}
         - setWeight: 50
         - pause:
             duration: 30s
@@ -46,7 +42,7 @@ spec:
               memory: "256Mi"
           env:
             - name: APP_VERSION
-              value: "v4-bad"
+              value: "alert-test"
             - name: ERROR_RATE
               value: "1"
           envFrom:
