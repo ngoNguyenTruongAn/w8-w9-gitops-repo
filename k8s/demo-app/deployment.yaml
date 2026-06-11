@@ -5,6 +5,8 @@ metadata:
   namespace: demo
   labels:
     app: demo-app
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
 spec:
   replicas: 2
   selector:
@@ -16,10 +18,21 @@ spec:
         app: demo-app
     spec:
       containers:
-        - name: demo-app
-          image: truonganngo/w8-w9-demo-app:6151384
+        - name: backend
+          image: truonganngo/w8-w9-demo-backend:6151384
           ports:
             - containerPort: 5000
           env:
             - name: APP_VERSION
               value: "6151384"
+          envFrom:
+            - configMapRef:
+                name: demo-app-config
+
+        - name: frontend
+          image: truonganngo/w8-w9-demo-frontend:6151384
+          ports:
+            - containerPort: 80
+          envFrom:
+            - configMapRef:
+                name: demo-app-config
