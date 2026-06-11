@@ -1,19 +1,17 @@
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
-
 metadata:
   name: demo-app
   namespace: monitoring
-
+  labels:
+    release: monitoring
 spec:
   selector:
     matchLabels:
       app: demo-app
-
   namespaceSelector:
     matchNames:
       - demo
-
   endpoints:
     - port: backend
       path: /metrics
