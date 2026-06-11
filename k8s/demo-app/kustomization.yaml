@@ -3,5 +3,5 @@ resources:
   - deployment.yaml
   - service.yaml
   - servicemonitor.yaml
-  - analysis-template.yaml
   - prometheus-rule.yaml
+  - alertmanager-config.yaml
