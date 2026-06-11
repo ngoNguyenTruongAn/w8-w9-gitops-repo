@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: truonganngo/w8-w9-demo-backend:1b635a7
+          image: truonganngo/w8-w9-demo-backend:2a48489
           ports:
             - containerPort: 5000
           resources:
@@ -37,7 +37,7 @@ spec:
                 name: demo-app-config
 
         - name: frontend
-          image: truonganngo/w8-w9-demo-frontend:1b635a7
+          image: truonganngo/w8-w9-demo-frontend:2a48489
           ports:
             - containerPort: 80
           resources:
