@@ -22,9 +22,16 @@ spec:
           image: truonganngo/w8-w9-demo-backend:1b635a7
           ports:
             - containerPort: 5000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
           env:
             - name: APP_VERSION
-              value: "6151384"
+              value: "4da332c"
           envFrom:
             - configMapRef:
                 name: demo-app-config
@@ -33,6 +40,13 @@ spec:
           image: truonganngo/w8-w9-demo-frontend:1b635a7
           ports:
             - containerPort: 80
+          resources:
+            requests:
+              cpu: "50m"
+              memory: "64Mi"
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
           envFrom:
             - configMapRef:
                 name: demo-app-config
