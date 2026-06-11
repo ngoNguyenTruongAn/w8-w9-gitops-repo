@@ -46,9 +46,9 @@ spec:
               memory: "256Mi"
           env:
             - name: APP_VERSION
-              value: "v3-bad"
+              value: "v4-bad"
             - name: ERROR_RATE
-              value: "0.8"
+              value: "1"
           envFrom:
             - configMapRef:
                 name: demo-app-config
