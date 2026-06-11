@@ -21,6 +21,7 @@ spec:
             severity: warning
             service: demo-app
             slo: availability
+            namespace: monitoring
           annotations:
             summary: "Demo App high error rate"
             description: "Demo App API error rate is above 5% for more than 1 minute. This violates the 95% availability SLO."
